@@ -1,0 +1,38 @@
+class Teacher
+  
+  attr_reader :name, :country, :id, :enc_load
+  attr_accessor :info
+
+  def initialize(name,country,email =nil,phone=nil)
+    @name = name
+    @country = country.upcase
+    @info = {"Email"=> email, "Phone" => phone}
+
+    @enc_load = 6
+  end
+
+  def get_email
+    puts "#{name}'s email: #{info["Email"]}."
+  end 
+
+  def get_phone
+    puts "#{name}'s phone number: #{info["Phone"]}."
+  end
+
+  def enc_reminder
+    puts "Hello #{name}! I hope this email finds you well. I just wanted to remind you that you have #{enc_load} encounters today!"
+  end
+end
+
+teachers = []
+
+tom = Teacher.new("Thomas","USA","tom@rubypractice.com")
+dick = Teacher.new("Richard","England",nil,5666557766)
+harry = Teacher.new("Harold","South Africa","harry_chapman@rubypractice.com", 6557758899)
+
+teachers << tom
+teachers << dick
+teachers << harry
+
+teachers.each {|teacher| teacher.get_phone }
+teachers.each {|teacher| teacher.get_email }
